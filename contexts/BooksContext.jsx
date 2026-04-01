@@ -76,11 +76,12 @@ export function BooksProvider({ children }) {
     useEffect(() => {
         let unsubscribe
         const channel = `databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`
-
+console.log("SUBSCRIBING...")
         if (user) {
             fetchBooks()
-
+console.log("SUBSCRIBING44444...")
             unsubscribe = client.subscribe(channel, (response) => {
+                console.log("EVENT RECEIVED:", response)
                 const { payload, events } = response
                 console.log(events)
 
